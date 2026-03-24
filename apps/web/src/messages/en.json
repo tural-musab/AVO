@@ -14,6 +14,13 @@
     "ctaPrimary": "Book a pilot",
     "ctaSecondary": "See the flow",
     "flow": {
+      "labels": {
+        "state": "State",
+        "routing": "Routing",
+        "system": "System",
+        "transaction": "Transaction",
+        "outcome": "Outcome"
+      },
       "state": "Service request received",
       "routing": "Order routed",
       "system": "POS synced",

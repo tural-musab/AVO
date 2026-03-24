@@ -36,9 +36,7 @@ export function Navbar() {
 
   useEffect(() => {
     localStorage.setItem("avo_lang", lang);
-    // Dispatch event so other components can react
     window.dispatchEvent(new CustomEvent("avo:locale-change", { detail: lang }));
-    // Load labels
     import(`@/messages/${lang}.json`).then((m) => {
       setNavLabels(m.default.nav);
     });
@@ -59,32 +57,18 @@ export function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "backdrop-blur-xl border-b py-3"
+          ? "bg-background/80 backdrop-blur-xl border-b border-outline-variant/30 py-3"
           : "bg-transparent py-5"
       }`}
-      style={{
-        backgroundColor: isScrolled ? "rgba(10,15,26,0.85)" : "transparent",
-        borderColor: isScrolled ? "var(--border)" : "transparent",
-      }}
     >
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center w-full">
         <div className="flex items-center gap-4">
           <Logo className="w-12 h-12" />
           <div className="flex flex-col">
-            <span
-              className="font-black text-2xl tracking-tighter leading-none"
-              style={{ color: "var(--text)", fontFamily: "var(--font-manrope)" }}
-            >
+            <span className="text-on-surface font-headline font-black text-2xl tracking-tighter leading-none">
               AVO
             </span>
-            <span
-              className="text-[10px] font-bold uppercase leading-none"
-              style={{
-                color: "var(--text-muted)",
-                letterSpacing: "0.2em",
-                fontFamily: "var(--font-manrope)",
-              }}
-            >
+            <span className="text-[10px] text-on-surface-variant font-bold uppercase tracking-[0.2em] leading-none">
               {navLabels.tagline}
             </span>
           </div>
@@ -96,41 +80,25 @@ export function Navbar() {
             <a
               key={key}
               href={`#${key === "howItWorks" ? "how-it-works" : key === "useCases" ? "use-cases" : "integrations"}`}
-              className="font-semibold tracking-tight transition-colors hover:opacity-100"
-              style={{
-                color: "var(--text-muted)",
-                fontFamily: "var(--font-manrope)",
-              }}
+              className="font-headline font-semibold tracking-tight text-on-surface-variant hover:text-primary transition-colors"
             >
               {navLabels[key]}
             </a>
           ))}
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           {/* Language Switcher */}
           <div className="relative">
             <button
               onClick={() => setShowLangMenu(!showLangMenu)}
-              className="p-2 rounded-full flex items-center gap-2 transition-colors"
-              style={{
-                background: "rgba(255,255,255,0.05)",
-                border: "1px solid var(--border)",
-                color: "var(--text)",
-              }}
+              className="p-2 rounded-full bg-surface-high/50 text-on-surface hover:bg-surface-high transition-colors border border-outline-variant/30 flex items-center gap-2"
             >
               <Globe size={18} />
               <span className="text-xs font-bold uppercase hidden sm:inline">{lang}</span>
             </button>
             {showLangMenu && (
-              <div
-                className="absolute top-full right-0 mt-2 rounded-xl shadow-xl overflow-hidden"
-                style={{
-                  background: "var(--surface)",
-                  border: "1px solid var(--border)",
-                  minWidth: "130px",
-                }}
-              >
+              <div className="absolute top-full right-0 mt-2 bg-surface border border-outline-variant/30 rounded-xl shadow-xl overflow-hidden min-w-[120px]">
                 {LANGUAGES.map((l) => (
                   <button
                     key={l.code}
@@ -138,11 +106,9 @@ export function Navbar() {
                       setLang(l.code);
                       setShowLangMenu(false);
                     }}
-                    className="w-full text-left px-4 py-2.5 text-sm font-bold transition-colors"
-                    style={{
-                      color: lang === l.code ? "var(--primary)" : "var(--text)",
-                      fontFamily: "var(--font-manrope)",
-                    }}
+                    className={`w-full text-left px-4 py-2.5 text-sm font-bold transition-colors hover:bg-primary/10 ${
+                      lang === l.code ? "text-primary" : "text-on-surface"
+                    }`}
                   >
                     {l.label}
                   </button>
@@ -154,12 +120,7 @@ export function Navbar() {
           {/* Theme Toggle */}
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="p-2 rounded-full transition-colors"
-            style={{
-              background: "rgba(255,255,255,0.05)",
-              border: "1px solid var(--border)",
-              color: "var(--text)",
-            }}
+            className="p-2 rounded-full bg-surface-high/50 text-on-surface hover:bg-surface-high transition-colors border border-outline-variant/30"
             aria-label="Toggle theme"
           >
             {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
@@ -168,12 +129,7 @@ export function Navbar() {
           {/* CTA */}
           <a
             href="#pilot-form"
-            className="px-6 py-2.5 rounded-full font-bold text-sm tracking-tight transition-all hover:opacity-90"
-            style={{
-              background: "var(--primary)",
-              color: "#0a0f1a",
-              fontFamily: "var(--font-manrope)",
-            }}
+            className="bg-primary text-on-primary px-6 py-2.5 rounded-full font-bold text-sm tracking-tight transition-all hover:opacity-90 hover:shadow-lg hover:shadow-primary/20 inline-block"
           >
             {navLabels.bookPilot}
           </a>
@@ -181,8 +137,7 @@ export function Navbar() {
           {/* Mobile Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden"
-            style={{ color: "var(--text)" }}
+            className="md:hidden text-on-surface"
           >
             {isOpen ? <X /> : <Menu />}
           </button>
@@ -191,16 +146,10 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div
-          className="md:hidden absolute top-full left-0 w-full p-8 flex flex-col gap-6 shadow-xl"
-          style={{
-            background: "var(--background)",
-            borderBottom: "1px solid var(--border)",
-          }}
-        >
-          <a href="#how-it-works" onClick={() => setIsOpen(false)} style={{ color: "var(--text)", fontFamily: "var(--font-manrope)" }} className="text-lg font-semibold">{navLabels.howItWorks}</a>
-          <a href="#use-cases" onClick={() => setIsOpen(false)} style={{ color: "var(--text)", fontFamily: "var(--font-manrope)" }} className="text-lg font-semibold">{navLabels.useCases}</a>
-          <a href="#integrations" onClick={() => setIsOpen(false)} style={{ color: "var(--text)", fontFamily: "var(--font-manrope)" }} className="text-lg font-semibold">{navLabels.integrations}</a>
+        <div className="absolute top-full left-0 w-full bg-background border-b border-outline-variant/30 p-8 flex flex-col gap-6 md:hidden z-40 shadow-xl">
+          <a href="#how-it-works" onClick={() => setIsOpen(false)} className="text-lg font-semibold text-on-surface">{navLabels.howItWorks}</a>
+          <a href="#use-cases" onClick={() => setIsOpen(false)} className="text-lg font-semibold text-on-surface">{navLabels.useCases}</a>
+          <a href="#integrations" onClick={() => setIsOpen(false)} className="text-lg font-semibold text-on-surface">{navLabels.integrations}</a>
         </div>
       )}
     </nav>

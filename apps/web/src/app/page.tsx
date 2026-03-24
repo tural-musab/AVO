@@ -12,16 +12,18 @@ import { PilotCTA } from "@/components/marketing/PilotCTA";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen" style={{ backgroundColor: "var(--background)" }}>
+    <div className="min-h-screen bg-background selection:bg-primary/30">
       <Navbar />
-      <HeroSection />
-      <ProblemSection />
-      <SolutionSection />
-      <HowItWorks />
-      <UseCasesSection />
-      <IntegrationSection />
-      <PilotCTA />
+      <main>
+        <HeroSection />
+        <ProblemSection />
+        <SolutionSection />
+        <HowItWorks />
+        <UseCasesSection />
+        <IntegrationSection />
+        <PilotCTA />
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 }

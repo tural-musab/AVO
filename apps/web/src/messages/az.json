@@ -14,6 +14,13 @@
     "ctaPrimary": "Pilot sifariş et",
     "ctaSecondary": "Axını gör",
     "flow": {
+      "labels": {
+        "state": "Status",
+        "routing": "Yönləndirmə",
+        "system": "Sistem",
+        "transaction": "Tranzaksiya",
+        "outcome": "Nəticə"
+      },
       "state": "Servis sorğusu alındı",
       "routing": "Sifariş yönləndirildi",
       "system": "POS sinxronlaşdırıldı",

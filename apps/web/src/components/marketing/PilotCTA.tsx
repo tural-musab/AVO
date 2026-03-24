@@ -1,90 +1,55 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, ArrowRight } from "lucide-react";
+import { CheckCircle, Mail } from "lucide-react";
 import { useTranslations } from "@/hooks/useTranslations";
 
 export function PilotCTA() {
   const t = useTranslations();
-  const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   if (!t.cta) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    // TODO: Integrate with API when backend is ready
-    setSubmitted(true);
-  };
-
   return (
-    <section
-      id="pilot-form"
-      className="py-24 px-6"
-      style={{ background: "var(--surface-variant)" }}
-    >
-      <div className="max-w-2xl mx-auto text-center">
-        <div
-          className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-8"
-          style={{ background: "var(--primary-muted)", color: "var(--primary)" }}
-        >
-          <Mail size={28} />
+    <section id="pilot-form" className="py-32 px-8 relative overflow-hidden bg-surface-low">
+      <div className="max-w-4xl mx-auto text-center relative z-10">
+        <div className="text-primary mb-6">
+          <Mail size={32} />
         </div>
-        <h2
-          className="text-3xl lg:text-5xl font-extrabold tracking-tighter mb-6"
-          style={{ color: "var(--text)", fontFamily: "var(--font-manrope)" }}
-        >
+        <h2 className="text-5xl font-headline font-extrabold text-on-surface mb-6 tracking-tight">
           {t.cta.title}
         </h2>
-        <p className="text-lg leading-relaxed mb-10" style={{ color: "var(--text-muted)" }}>
-          {t.cta.desc}
-        </p>
+        <p className="text-xl text-on-surface-variant mb-12">{t.cta.desc}</p>
 
-        {submitted ? (
-          <div
-            className="py-6 px-8 rounded-2xl text-lg font-semibold"
-            style={{
-              background: "var(--primary-muted)",
-              color: "var(--primary)",
-              border: "1px solid rgba(0,194,168,0.3)",
-            }}
-          >
-            {t.cta.success}
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder={t.cta.placeholder}
-              required
-              className="flex-1 px-5 py-4 rounded-full text-base outline-none transition-all"
-              style={{
-                background: "var(--surface)",
-                border: "1px solid var(--border)",
-                color: "var(--text)",
+        <div className="bg-surface p-1 border border-outline-variant/30 rounded-2xl max-w-lg mx-auto shadow-2xl">
+          {!submitted ? (
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                setSubmitted(true);
               }}
-            />
-            <button
-              type="submit"
-              className="px-8 py-4 rounded-full font-bold text-base transition-all hover:opacity-90 flex items-center justify-center gap-2"
-              style={{
-                background: "var(--primary)",
-                color: "#0a0f1a",
-                fontFamily: "var(--font-manrope)",
-              }}
+              className="flex flex-col md:flex-row gap-2"
             >
-              {t.cta.button}
-              <ArrowRight size={18} />
-            </button>
-          </form>
-        )}
-
-        <p className="mt-6 text-sm" style={{ color: "var(--text-dim)" }}>
-          {t.cta.footer}
-        </p>
+              <input
+                className="flex-grow bg-background border-none rounded-full text-on-surface px-6 py-4 focus:ring-2 focus:ring-primary text-sm font-medium outline-none"
+                placeholder={t.cta.placeholder}
+                required
+                type="email"
+              />
+              <button className="bg-primary text-on-primary px-8 py-4 rounded-full font-bold text-sm whitespace-nowrap hover:opacity-90 transition-all shadow-lg shadow-primary/20">
+                {t.cta.button}
+              </button>
+            </form>
+          ) : (
+            <div className="py-8 px-6 text-primary font-bold text-lg flex flex-col items-center gap-4">
+              <CheckCircle size={48} />
+              <span>{t.cta.success}</span>
+            </div>
+          )}
+          <p className="text-[11px] text-on-surface-variant font-medium mt-4 pb-3">
+            {t.cta.footer}
+          </p>
+        </div>
       </div>
     </section>
   );

@@ -1,93 +1,75 @@
 "use client";
 
-import { Store, Building2, LayoutGrid, CheckCircle } from "lucide-react";
+import { Store, Building2, LayoutGrid } from "lucide-react";
 import { useTranslations } from "@/hooks/useTranslations";
 
-const CARD_ICONS = [Store, Building2, LayoutGrid];
+function CaseCard({
+  icon,
+  title,
+  desc,
+  features,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  desc: string;
+  features: string[];
+}) {
+  return (
+    <div className="group bg-surface-low p-1 rounded-xl transition-all hover:bg-gradient-to-br hover:from-primary/10 hover:to-transparent border border-outline-variant/30 shadow-sm">
+      <div className="bg-surface p-8 rounded-[10px] h-full relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-1 h-full bg-primary transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
+        <div className="text-primary mb-6">{icon}</div>
+        <h3 className="text-xl font-bold text-on-surface mb-4">{title}</h3>
+        <p className="text-sm text-on-surface-variant leading-relaxed mb-6">{desc}</p>
+        <ul className="space-y-3 text-xs text-on-surface/80">
+          {features.map((f: string, i: number) => (
+            <li key={i} className="flex items-center gap-2 font-medium">
+              <span className="w-1.5 h-1.5 bg-primary rounded-full" /> {f}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
 
 export function UseCasesSection() {
   const t = useTranslations();
-  if (!t.useCases?.cards) return null;
+  if (!t.useCases) return null;
+
+  const icons = [<Store key={0} size={40} />, <Building2 key={1} size={40} />, <LayoutGrid key={2} size={40} />];
 
   return (
-    <section
-      id="use-cases"
-      className="py-24 px-6"
-      style={{ background: "var(--surface-variant)" }}
-    >
+    <section id="use-cases" className="py-32 px-8 bg-background">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2
-            className="text-3xl lg:text-5xl font-extrabold tracking-tighter mb-4"
-            style={{ color: "var(--text)", fontFamily: "var(--font-manrope)" }}
-          >
+        <div className="mb-16">
+          <h2 className="text-4xl font-headline font-bold text-on-surface mb-4">
             {t.useCases.title}
           </h2>
-          <p className="text-lg" style={{ color: "var(--text-muted)" }}>
-            {t.useCases.subtitle}
-          </p>
+          <p className="text-on-surface-variant text-lg">{t.useCases.subtitle}</p>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {t.useCases.cards.map(
-            (
-              card: { title: string; desc: string; features: string[] },
-              i: number
-            ) => {
-              const Icon = CARD_ICONS[i] || Store;
-              const isComingSoon = i === 2;
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {t.useCases.cards.map((c: { title: string; desc: string; features: string[] }, i: number) => {
+            if (i === 2) {
               return (
-                <div
-                  key={i}
-                  className="glass-card p-8 flex flex-col gap-5 relative"
-                >
-                  {isComingSoon && (
-                    <span
-                      className="absolute top-4 right-4 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-widest"
-                      style={{
-                        background: "var(--accent-muted)",
-                        color: "var(--accent)",
-                      }}
-                    >
-                      {t.useCases.comingSoon}
-                    </span>
-                  )}
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center"
-                    style={{ background: "var(--primary-muted)", color: "var(--primary)" }}
-                  >
-                    <Icon size={24} />
+                <div key={i} className="group relative bg-surface-low p-1 rounded-xl border border-outline-variant/20 overflow-hidden">
+                  <div className="absolute inset-0 z-10 bg-surface/85 flex items-center justify-center p-8 text-center backdrop-blur-sm">
+                    <div className="flex flex-col items-center">
+                      <span className="bg-primary/10 text-primary border border-primary/30 px-4 py-1.5 rounded-full text-[12px] font-black uppercase tracking-widest mb-4">
+                        {t.useCases.comingSoon}
+                      </span>
+                      <h3 className="text-xl font-bold text-on-surface mb-2">{c.title}</h3>
+                      <p className="text-sm text-on-surface-variant leading-relaxed">{c.desc}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3
-                      className="text-xl font-bold mb-2"
-                      style={{ color: "var(--text)", fontFamily: "var(--font-manrope)" }}
-                    >
-                      {card.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                      {card.desc}
-                    </p>
-                  </div>
-                  <ul className="space-y-2">
-                    {card.features.map((f: string) => (
-                      <li
-                        key={f}
-                        className="flex items-center gap-2 text-sm"
-                        style={{ color: "var(--text-muted)" }}
-                      >
-                        <CheckCircle
-                          size={14}
-                          style={{ color: "var(--primary)", flexShrink: 0 }}
-                        />
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
+                  <CaseCard icon={icons[i]} title={c.title} desc={c.desc} features={c.features} />
                 </div>
               );
             }
-          )}
+            return (
+              <CaseCard key={i} icon={icons[i]} title={c.title} desc={c.desc} features={c.features} />
+            );
+          })}
         </div>
       </div>
     </section>
