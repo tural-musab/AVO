@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@source "../../src/**/*.{ts,tsx}";
 
 /* ============================================
    AVO Design System — CSS Custom Properties
