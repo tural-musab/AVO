@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+/* ============================================
+   AVO Design System — CSS Custom Properties
+   ============================================ */
+:root {
+  /* Dark theme (default) */
+  --background: #0a0f1a;
+  --surface: #111827;
+  --surface-variant: #1a2744;
+  --surface-muted: #1e293b;
+  --border: #1e3a5f;
+  --border-muted: #1a2744;
+
+  --primary: #00c2a8;
+  --primary-dim: #00a891;
+  --primary-muted: rgba(0, 194, 168, 0.12);
+
+  --accent: #f59e0b;
+  --accent-dim: #d97706;
+  --accent-muted: rgba(245, 158, 11, 0.12);
+
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+
+  --radius: 0.75rem;
+  --radius-sm: 0.5rem;
+  --radius-lg: 1rem;
+}
+
+.light {
+  --background: #f8fafc;
+  --surface: #ffffff;
+  --surface-variant: #f1f5f9;
+  --surface-muted: #e2e8f0;
+  --border: #e2e8f0;
+  --border-muted: #f1f5f9;
+
+  --primary: #0891b2;
+  --primary-dim: #0e7490;
+  --primary-muted: rgba(8, 145, 178, 0.1);
+
+  --accent: #d97706;
+  --accent-dim: #b45309;
+  --accent-muted: rgba(217, 119, 6, 0.1);
+
+  --text: #0f172a;
+  --text-muted: #475569;
+  --text-dim: #94a3b8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Manrope", system-ui, -apple-system, sans-serif;
+}
+
+/* Utility classes */
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.light .glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--border);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary) 0%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

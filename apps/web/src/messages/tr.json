@@ -1,0 +1,102 @@
+{
+  "nav": {
+    "howItWorks": "Nasıl Çalışır",
+    "useCases": "Kullanım Alanları",
+    "integrations": "Entegrasyonlar",
+    "bookPilot": "Pilot Uygulama Başlat",
+    "tagline": "Adaptif Mekan Orkestrasyonu"
+  },
+  "hero": {
+    "badge": "HİBRİT SERVİS ORKESTRASYONU",
+    "title": "Servis, sipariş ve ödeme — tek bir",
+    "titleAccent": "operasyonel akışta.",
+    "desc": "AVO, restoranların ve ortak mekanların mevcut sistemlerini değiştirmeden hibrit servis, sipariş ve ödeme akışlarını orkestre etmesine yardımcı olur.",
+    "ctaPrimary": "Pilot Başlat",
+    "ctaSecondary": "Akışı Gör",
+    "flow": {
+      "state": "Servis talebi alındı",
+      "routing": "Sipariş yönlendirildi",
+      "system": "POS senkronize edildi",
+      "transaction": "Ödeme beklemede",
+      "outcome": "Ödeme onaylandı",
+      "syncing": "VERİ SENKRONİZASYONU"
+    }
+  },
+  "problem": {
+    "title": "Akış bozulunca misafirperver hizmet de bozulur.",
+    "items": [
+      { "title": "Personel dikkat gecikmeleri", "desc": "Manuel devir teslim ve görsel kontrollere dayandığında servis yavaşlar." },
+      { "title": "Sipariş darboğazları", "desc": "Yoğun vardiyalar sipariş akışındaki zayıf noktaları ortaya çıkarır, gelir kaybına ve hayal kırıklığına yol açar." },
+      { "title": "Ödeme sürtüşmesi", "desc": "Son masa anı çoğu zaman en yavaş olandır; ciro ve misafir memnuniyeti sekteye uğrar." },
+      { "title": "Parçalanmış operasyonlar", "desc": "Talepler, siparişler ve ödeme durumu birbirinden kopuk eski araçlara dağılmış haldedir." }
+    ]
+  },
+  "solution": {
+    "title": "AVO, masa ile operasyon arasındaki orkestrasyon katmanıdır.",
+    "desc": "POS'unuzun yerini almıyoruz. Halihazırda yürüttüğünüz operasyonun içinde servis, sipariş ve ödeme akışını birlikte çalışır hale getiriyoruz.",
+    "quote": "AVO sürtüşmeyi ortadan kaldırır, temel sistemlerinizi değil.",
+    "features": ["Birleşik Akış Motoru", "Eski Sistem Uyumlu Entegrasyon"],
+    "cards": [
+      { "title": "Hibrit servis", "label": "Servis Talebi Durumu", "desc": "Misafir tercihine veya personel kapasitesine göre dijital öncelikli ve personel destekli servis modelleri arasında sorunsuz geçiş yapın." },
+      { "title": "Entegrasyon öncelikli", "label": "Sipariş Kuyruğu Mantığı", "desc": "Mevcut POS ve KDS sağlayıcılarınıza derin entegrasyon sayesinde karmaşık iş akışı değişiklikleri olmadan gelişmiş yönlendirme yapın." },
+      { "title": "Gerçek mekanlar için tasarlandı", "label": "Senkronizasyon Onayı", "desc": "Yüksek hacimli ortamların kaosuna göre tasarlanmış; yedek operasyonlar ve donanım uyumluluğu garanti altında." }
+    ]
+  },
+  "howItWorks": {
+    "title": "Orkestrasyon hayata geçiyor.",
+    "subtitle": "Misafir eylemleri operasyonel sinyallere dönüşür — tek bir bağlı akışta yönlendirilir, hizalanır ve tamamlanır.",
+    "steps": [
+      { "title": "Misafir başlatır", "desc": "Misafir QR kodu tarar, fiziksel düğmeyle personel çağırır veya mobil cihazından direkt sipariş verir." },
+      { "title": "AVO eylemi yönlendirir", "desc": "Talep anında kategorize edilir ve gerçek zamanlı olarak doğru ekrana, cihaza veya ekip üyesine iletilir." },
+      { "title": "Personel ve sistemler uyum içinde", "desc": "Mevcut POS ve KDS'niz veriyi alır. Personel giyilebilir veya elde taşınan uyarılarla güncel kalır." },
+      { "title": "Ödeme ve durum ilerler", "desc": "Hazır olduğunuzda ödeme — tezgah ödemesiyle başlayıp desteklenen yerlerde masa başı seçenekleriyle devam eder." }
+    ]
+  },
+  "useCases": {
+    "title": "Tasarımla çok yönlülük.",
+    "subtitle": "Modern misafirperver operatörler için özelleştirilmiş orkestrasyon.",
+    "comingSoon": "Yakında",
+    "cards": [
+      { "title": "Tek restoran", "desc": "Bağımsız mekanlarda altyapınızı değiştirmeden misafir deneyimini ve personel verimliliğini artırın.", "features": ["Personel talebi yönlendirme", "POS uyumlu entegrasyon", "Yedekli operasyonlar"] },
+      { "title": "Çok markalı operatör", "desc": "Tutarlı akış için tek bir orkestrasyon katmanıyla farklı konseptlerdeki operasyonları merkezileştirin.", "features": ["Çok markalı orkestrasyon", "Operatör düzeyinde görünürlük", "Birleşik veri raporlaması"] },
+      { "title": "Food hall orkestrasyonu", "desc": "Nihai zorluk. Tek misafir ödeme akışıyla çok satıcılı sipariş.", "features": ["Çok satıcılı", "Tek Ödeme", "Karmaşık Yönlendirme"] }
+    ]
+  },
+  "integrations": {
+    "title": "Kesintisiz entegrasyon.",
+    "desc": "AVO, adaptörler ve yedek mantık aracılığıyla mevcut altyapınıza bağlanır — zorla değiştirme projesine girmeden akışı iyileştirin.",
+    "posTitle": "POS adaptör yaklaşımı",
+    "posDesc": "Sorunsuz veri akışı için eski sistemlere derin entegrasyon.",
+    "fallbackTitle": "Yedeklemeye hazır",
+    "fallbackDesc": "Zorla değiştirme olmadan akışı iyileştirmek için tasarlandı.",
+    "bannerTitle": "Zorla değiştirme yok",
+    "bannerDesc": "Personelinizin zaten bildiği donanım ve yazılımı saklayın. Bağlantı orkestrasyon katmanı olarak onlara uyum sağlıyoruz.",
+    "touchpoints": "Misafir Temas Noktaları",
+    "orchestration": "AVO ORKESTRASYONU",
+    "orchestrationSub": "Gerçek zamanlı adaptif yönlendirme ve mantık",
+    "tech": {
+      "pos": "POS / KDS",
+      "payment": "Ödeme",
+      "staffApp": "Personel Uygulaması",
+      "staffView": "Personel Görünümü"
+    }
+  },
+  "cta": {
+    "title": "Odaklı bir pilotla başlayın.",
+    "desc": "Tek mekan, odaklı kapsam, ölçülebilir sonuç. Genişlemeden önce akışı doğrulayın ve etkiyi ölçün.",
+    "placeholder": "İş e-posta adresi",
+    "button": "Pilot Başlat",
+    "success": "İlginiz için teşekkürler, yakında sizinle iletişime geçeceğiz!",
+    "footer": "Pilot süresi mekan ve POS kurulumuna göre değişir."
+  },
+  "footer": {
+    "tagline": "Akış için tasarlandı, sürtüşme için değil.",
+    "desc": "AVO, modern mekan operasyonları için hibrit servis, sipariş ve ödeme akışını orkestre eder.",
+    "rights": "© 2026 AVO - Adaptif Mekan Orkestrasyonu. Tüm hakları saklıdır.",
+    "platform": "Platform",
+    "company": "Şirket",
+    "privacy": "Gizlilik Politikası",
+    "terms": "Kullanım Koşulları",
+    "contact": "İletişim"
+  }
+}

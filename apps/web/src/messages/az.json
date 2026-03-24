@@ -1,0 +1,102 @@
+{
+  "nav": {
+    "howItWorks": "Necə işləyir",
+    "useCases": "İstifadə halları",
+    "integrations": "İnteqrasiyalar",
+    "bookPilot": "Pilot sifariş et",
+    "tagline": "Adaptiv Məkan Orkestrasiyası"
+  },
+  "hero": {
+    "badge": "HİBRİD SERVİS ORKESTRASİYASI",
+    "title": "Servis, sifarişlər və ödənişlər — tək bir",
+    "titleAccent": "əməliyyat axınında.",
+    "desc": "AVO restoranlara və paylaşılan məkanlara mövcud sistemlərini dəyişmədən hibrid servis, sifariş və ödəniş axınlarını təşkil etməyə kömək edir.",
+    "ctaPrimary": "Pilot sifariş et",
+    "ctaSecondary": "Axını gör",
+    "flow": {
+      "state": "Servis sorğusu alındı",
+      "routing": "Sifariş yönləndirildi",
+      "system": "POS sinxronlaşdırıldı",
+      "transaction": "Ödəniş gözlənilir",
+      "outcome": "Ödəniş təsdiqləndi",
+      "syncing": "MƏLUMAT SİNXRONLAŞDIRILIR"
+    }
+  },
+  "problem": {
+    "title": "Axın pozulduqda qonaqpərvərlik də pozulur.",
+    "items": [
+      { "title": "Heyət diqqətinin gecikməsi", "desc": "Servis heyətin diqqəti mexaniki ötürmələrdən və vizual yoxlamalardan asılı olduqda ləngiyir." },
+      { "title": "Sifariş darboğazları", "desc": "Məşğul növbələr sifariş axınındakı zəif nöqtələri üzə çıxarır, bu da gəlir itkisinə və məyusluğa səbəb olur." },
+      { "title": "Ödəniş sürtünməsi", "desc": "Masanın son anı adətən ən yavaş olanıdır, bu da masa dövriyyəsini və qonaq məmnuniyyətini ləngidir." },
+      { "title": "Parçalanmış əməliyyatlar", "desc": "Sorğular, sifarişlər və ödəniş statusları bir-birindən ayrılmış köhnə alətlər arasında bölünür." }
+    ]
+  },
+  "solution": {
+    "title": "AVO masa ilə əməliyyat arasındakı orkestrasiya qatıdır.",
+    "desc": "Biz sizin POS sisteminizi əvəz etmirik. Biz servis, sifariş və ödəniş axınını artıq işlətdiyiniz əməliyyat daxilində birlikdə işlədirik.",
+    "quote": "AVO əsas sistemlərinizi deyil, sürtünməni əvəz edir.",
+    "features": ["Vahid Axın Mühərriki", "Köhnə Sistemlərlə Təhlükəsiz İnteqrasiya"],
+    "cards": [
+      { "title": "Hibrid servis", "label": "Servis Sorğusu Statusu", "desc": "Qonaq seçiminə və ya heyət imkanlarına əsasən rəqəmsal və heyət tərəfindən dəstəklənən servis modelləri arasında rəvan keçid edin." },
+      { "title": "İnteqrasiya üstünlüyü", "label": "Sifariş Növbəsi Məntiqi", "desc": "Mürəkkəb iş axını yenidən qurulmadan qabaqcıl yönləndirməni təmin etmək üçün mövcud POS ve KDS provayderlərinizə dərindən qoşulun." },
+      { "title": "Real məkanlar üçün", "label": "Sinxronizasiya Təsdiqi", "desc": "Yüksək həcmli mühitlərin xaosu üçün nəzərdə tutulmuşdur, nasazlıqlara hazırlığı və avadanlıq uyğunluğunu təmin edir." }
+    ]
+  },
+  "howItWorks": {
+    "title": "Orkestrasiya iş başında.",
+    "subtitle": "Qonaq hərəkətləri əməliyyat siqnallarına çevrilir — tək bir əlaqəli axında yönləndirilir, uyğunlaşdırılır və tamamlanır.",
+    "steps": [
+      { "title": "Qonaq başlayır", "desc": "Qonaq QR kodu skan edir, fiziki düymə vasitəsilə heyəti çağırır və ya birbaşa mobil cihazından sifariş verir." },
+      { "title": "AVO hərəkəti yönləndirir", "desc": "Sorğu dərhal kateqoriyalara ayrılır və real vaxt rejimində düzgün ekrana, cihaza və ya komanda üzvünə yönləndirilir." },
+      { "title": "Heyət və sistemlər uyğun qalır", "desc": "Mövcud POS və KDS sistemləriniz məlumatları qəbul edir. Heyət geyilə bilən və ya əl cihazı bildirişləri ilə məlumatlı qalır." },
+      { "title": "Ödəniş və status irəliləyir", "desc": "Hazır olduğunuzda ödəniş edin — kassa ödənişi ilə başlayır, dəstəklənən yerlərdə masa arxası seçimlər təklif olunur." }
+    ]
+  },
+  "useCases": {
+    "title": "Dizayn etibarilə çoxşaxəli.",
+    "subtitle": "Müasir qonaqpərvərlik operatorları üçün fərdiləşdirilmiş orkestrasiya.",
+    "comingSoon": "Tezliklə",
+    "cards": [
+      { "title": "Tək restoran", "desc": "Texnologiya yığımınızı dəyişmədən müstəqil məkanlarda qonaq təcrübəsini və heyət səmərəliliyini artırın.", "features": ["Heyət sorğusunun yönləndirilməsi", "POS-təhlükəsiz inteqrasiya", "Nasazlıqlara hazır əməliyyatlar"] },
+      { "title": "Çoxmarkalı operator", "desc": "Davamlı axın üçün tək bir orkestrasiya qatı ilə müxtəlif konsepsiyalar üzrə əməliyyatları mərkəzləşdirin.", "features": ["Çoxmarkalı orkestrasiya", "Operator səviyyəsində görünürlük", "Vahid məlumat hesabatı"] },
+      { "title": "Food hall orkestrasiyası", "desc": "Ən böyük çətinlik. Tək bir qonaq ödəniş axını ilə çoxlu satıcı sifariş idarəetməsi.", "features": ["Çoxlu satıcı", "Vahid Ödəniş", "Mürəkkəb Yönləndirmə"] }
+    ]
+  },
+  "integrations": {
+    "title": "Kəsilməz inteqrasiya.",
+    "desc": "AVO adaptörlər və ehtiyat məntiqi vasitəsilə mövcud sistemlərinizə qoşulur — sistemləri söküb atmadan axını təkmilləşdirir.",
+    "posTitle": "POS adaptör yanaşması",
+    "posDesc": "Məlumatların rəvan axını üçün köhnə sistemlərə dərindən qoşulma.",
+    "fallbackTitle": "Nasazlıqlara hazır",
+    "fallbackDesc": "Sistemləri söküb atmaya məcbur etmədən axını təkmilləşdirmək üçün yaradılmışdır.",
+    "bannerTitle": "Məcburi sistem dəyişikliyi yoxdur",
+    "bannerDesc": "Heyətinizin artıq bildiyi avadanlıq və proqram təminatını qoruyun. Biz onlara uyğunlaşırıq, əlaqələndirici orkestrasiya qatı kimi çıxış edirik.",
+    "touchpoints": "Qonaq Təmas Nöqtələri",
+    "orchestration": "AVO ORKESTRASİYASI",
+    "orchestrationSub": "Real vaxt rejimində adaptiv yönləndirmə və Məntiq",
+    "tech": {
+      "pos": "POS / KDS",
+      "payment": "Ödəniş",
+      "staffApp": "Heyət Tətbiqi",
+      "staffView": "Heyət Görünüşü"
+    }
+  },
+  "cta": {
+    "title": "Fokuslanmış bir pilot ilə başlayın.",
+    "desc": "Bir məkan, fokuslanmış əhatə, ölçülə bilən nəticə. Genişlənməzdən əvvəl axını yoxlayın və təsiri ölçün.",
+    "placeholder": "İş e-poçt ünvanı",
+    "button": "Pilot sifariş et",
+    "success": "Marağınız üçün təşəkkür edirik, tezliklə əlaqə saxlayacağıq!",
+    "footer": "Pilot müddəti məkana və POS qurğusuna görə dəyişir."
+  },
+  "footer": {
+    "tagline": "Axın üçün, sürtünmə üçün deyil.",
+    "desc": "AVO müasir məkan əməliyyatları üçün hibrid servis, sifariş və ödəniş axınını orkestrasiya edir.",
+    "rights": "© 2026 AVO - Adaptiv Məkan Orkestrasiyası. Bütün hüquqlar qorunur.",
+    "platform": "Platforma",
+    "company": "Şirkət",
+    "privacy": "Məxfilik Siyasəti",
+    "terms": "İstifadə Şərtləri",
+    "contact": "Əlaqə"
+  }
+}

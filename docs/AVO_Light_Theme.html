@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AVO — Adaptive Venue Orchestration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid rgba(203, 213, 209, 0.5);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .flow-connector {
+            position: absolute;
+            width: 2px;
+            height: 40px;
+            background: #0d9488;
+            left: 24px;
+            z-index: 0;
+        }
+        .flow-connector::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 6px solid #0d9488;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#7bd0ff",
+              "error-container": "#93000a",
+              "background": "#F8FAFC",
+              "secondary-fixed": "#9cf2e8",
+              "on-secondary-container": "#9af0e5",
+              "primary-fixed-dim": "#0d9488",
+              "on-tertiary": "#00354a",
+              "on-primary": "#FFFFFF",
+              "primary-fixed": "#71f8e4",
+              "on-surface-variant": "#475569",
+              "secondary-fixed-dim": "#80d5cb",
+              "on-error": "#690005",
+              "primary-container": "#0f766e",
+              "surface-tint": "#0d9488",
+              "surface-container": "#E8EFF5",
+              "surface-variant": "#CBD8E8",
+              "on-tertiary-container": "#003f58",
+              "outline": "#94A3B8",
+              "on-primary-fixed": "#00201c",
+              "surface-container-high": "#DDEAF4",
+              "outline-variant": "#CBD5D1",
+              "on-tertiary-fixed": "#001e2c",
+              "tertiary-container": "#1eb0ea",
+              "on-tertiary-fixed-variant": "#004c69",
+              "on-primary-container": "#F0FDFA",
+              "tertiary-fixed": "#c4e7ff",
+              "surface-bright": "#FFFFFF",
+              "on-error-container": "#ffdad6",
+              "surface-container-low": "#F1F5F9",
+              "primary": "#0d9488",
+              "surface-container-lowest": "#EEF4FB",
+              "tertiary-fixed-dim": "#7bd0ff",
+              "surface-container-highest": "#CBD8E8",
+              "secondary-container": "#007068",
+              "surface-dim": "#F8FAFC",
+              "inverse-on-surface": "#F8FAFC",
+              "on-secondary-fixed": "#00201d",
+              "on-secondary": "#003733",
+              "error": "#ffb4ab",
+              "on-secondary-fixed-variant": "#00504a",
+              "secondary": "#80d5cb",
+              "on-background": "#0F172A",
+              "inverse-primary": "#006b5f",
+              "on-surface": "#0F172A",
+              "inverse-surface": "#0F172A",
+              "on-primary-fixed-variant": "#005048",
+              "surface": "#F8FAFC"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30">
+<!-- TopNavBar -->
+<nav class="bg-[#F8FAFC]/95 flex items-center justify-between px-8 py-6 sticky top-0 z-50 backdrop-blur-xl border-b border-[#CBD5D1]/60 shadow-[0_4px_20px_rgba(0,0,0,0.06)] h-20">
+<div class="max-w-7xl mx-auto flex items-center justify-between w-full">
+<div class="text-2xl font-bold tracking-tighter text-[#0d9488] font-headline">AVO</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-['Manrope'] font-semibold tracking-tight text-[#0F172A] hover:text-[#0d9488] transition-colors" href="#how-it-works">How it works</a>
+<a class="font-['Manrope'] font-semibold tracking-tight text-[#0F172A] hover:text-[#0d9488] transition-colors" href="#use-cases">Use cases</a>
+<a class="font-['Manrope'] font-semibold tracking-tight text-[#0F172A] hover:text-[#0d9488] transition-colors" href="#integrations">Integrations</a>
+</div>
+<a class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-6 py-2.5 rounded font-bold text-sm tracking-tight scale-95 transition-transform active:scale-90 hover:opacity-90 inline-block shadow-lg" href="#pilot-form">
+                Book a pilot
+            </a>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative pt-24 pb-32 px-8 overflow-hidden">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+<div class="lg:col-span-7">
+<span class="inline-block px-3 py-1 bg-primary/10 text-primary text-[11px] font-bold tracking-[0.1em] uppercase mb-6 rounded-sm border border-primary/20">HYBRID SERVICE ORCHESTRATION</span>
+<h1 class="text-5xl lg:text-7xl font-headline font-extrabold tracking-tighter leading-[1.05] text-on-background mb-8">
+                        Service, orders, and payments — in one <span class="gradient-text">operational flow.</span>
+</h1>
+<p class="text-xl text-on-surface-variant max-w-2xl leading-relaxed mb-10">
+                        AVO helps restaurants and shared venues orchestrate hybrid service, ordering, and payment flows without replacing the systems they already use.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<a class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-8 py-4 rounded font-bold text-base transition-all hover:shadow-[0_0_20px_rgba(13,148,136,0.22)]" href="#pilot-form">
+                            Book a pilot
+                        </a>
+<a class="border border-outline-variant/50 text-on-surface px-8 py-4 rounded font-bold text-base hover:bg-surface-container transition-colors inline-block" href="#how-it-works">See the flow</a>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<!-- Product Flow Mockup -->
+<div class="relative p-8 bg-[#EEF4FB] rounded-2xl border border-[#CBD5D1]/60 shadow-2xl flex flex-col gap-8">
+<!-- Step 1 -->
+<div class="relative z-10">
+<div class="bg-white border-l-4 border-[#0d9488] p-4 rounded-r-lg flex items-center gap-4 w-72 transition-all hover:bg-[#F1F5F9]">
+<span class="material-symbols-outlined text-[#0d9488] text-xl">qr_code_scanner</span>
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-on-surface/60 uppercase tracking-widest">State</span>
+<span class="text-sm font-bold text-on-surface">Service request received</span>
+</div>
+</div>
+<div class="flow-connector mt-2"></div>
+</div>
+<!-- Step 2 -->
+<div class="relative z-10">
+<div class="bg-white border-l-4 border-[#0d9488] p-4 rounded-r-lg flex items-center gap-4 w-72 translate-x-4 transition-all hover:bg-[#F1F5F9]">
+<span class="material-symbols-outlined text-[#0d9488] text-xl">alt_route</span>
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-on-surface/60 uppercase tracking-widest">Routing</span>
+<span class="text-sm font-bold text-on-surface">Order routed</span>
+</div>
+</div>
+<div class="flow-connector mt-2" style="left: 40px;"></div>
+</div>
+<!-- Step 3 -->
+<div class="relative z-10">
+<div class="bg-white border-l-4 border-[#0d9488] p-4 rounded-r-lg flex items-center gap-4 w-72 translate-x-8 transition-all hover:bg-[#F1F5F9]">
+<span class="material-symbols-outlined text-[#0d9488] text-xl">sync_alt</span>
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-on-surface/60 uppercase tracking-widest">System</span>
+<span class="text-sm font-bold text-on-surface">POS synced</span>
+</div>
+</div>
+<div class="flow-connector mt-2" style="left: 56px;"></div>
+</div>
+<!-- Step 4 -->
+<div class="relative z-10">
+<div class="bg-white border-l-4 border-orange-400 p-4 rounded-r-lg flex items-center gap-4 w-72 translate-x-12 transition-all hover:bg-[#F1F5F9]">
+<span class="material-symbols-outlined text-orange-400 text-xl">credit_card</span>
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-on-surface/60 uppercase tracking-widest">Transaction</span>
+<span class="text-sm font-bold text-on-surface">Payment pending</span>
+</div>
+</div>
+<div class="flow-connector mt-2" style="left: 72px;"></div>
+</div>
+<!-- Step 5 -->
+<div class="relative z-10">
+<div class="bg-white border-l-4 border-primary p-4 rounded-r-lg flex items-center gap-4 w-72 translate-x-16 transition-all hover:bg-[#F1F5F9]">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-on-surface/60 uppercase tracking-widest">Outcome</span>
+<span class="text-sm font-bold text-on-surface">Payment confirmed</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Problem Section -->
+<section class="py-24 px-8 bg-surface-container-low">
+<div class="max-w-7xl mx-auto">
+<div class="mb-16">
+<h2 class="text-3xl font-headline font-bold text-on-background mb-4">Hospitality breaks when flow breaks.</h2>
+<div class="h-1 w-20 bg-primary"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="p-8 glass-card rounded-lg border-l-2 border-l-transparent hover:border-l-primary transition-all duration-300 h-full">
+<span class="material-symbols-outlined text-primary mb-6 text-3xl">hourglass_empty</span>
+<h3 class="text-lg font-bold text-on-background mb-3">Staff attention delays</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Service slows down when staff attention depends on manual handoffs and visual checks.</p>
+</div>
+<div class="p-8 glass-card rounded-lg border-l-2 border-l-transparent hover:border-l-primary transition-all duration-300 h-full">
+<span class="material-symbols-outlined text-primary mb-6 text-3xl">speed</span>
+<h3 class="text-lg font-bold text-on-background mb-3">Ordering bottlenecks</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Busy shifts expose weak points in the order flow, leading to lost revenue and frustration.</p>
+</div>
+<div class="p-8 glass-card rounded-lg border-l-2 border-l-transparent hover:border-l-primary transition-all duration-300 h-full">
+<span class="material-symbols-outlined text-primary mb-6 text-3xl">credit_card_off</span>
+<h3 class="text-lg font-bold text-on-background mb-3">Payment friction</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">The final table moment is often the slowest, stalling turnover and guest satisfaction.</p>
+</div>
+<div class="p-8 glass-card rounded-lg border-l-2 border-l-transparent hover:border-l-primary transition-all duration-300 h-full">
+<span class="material-symbols-outlined text-primary mb-6 text-3xl">account_tree</span>
+<h3 class="text-lg font-bold text-on-background mb-3">Fragmented operations</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Requests, orders, and payment status are split across disconnected, legacy tools.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Solution Section -->
+<section class="py-32 px-8">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+<div class="lg:col-span-4 lg:sticky lg:top-32">
+<h2 class="text-4xl font-headline font-bold text-on-background mb-6 leading-tight">AVO is the orchestration layer between the table and the operation.</h2>
+<p class="text-on-surface-variant mb-8 text-lg">We don't replace your POS. We make service, orders, and payment flow work together inside the operation you already run.</p>
+<div class="p-6 bg-primary/5 border border-primary/20 rounded-xl mb-8">
+<p class="text-primary font-bold text-base italic">"AVO replaces friction, not your core systems."</p>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4 text-primary">
+<span class="material-symbols-outlined">check_circle</span>
+<span class="font-bold text-sm">Unified Flow Engine</span>
+</div>
+<div class="flex items-center gap-4 text-primary">
+<span class="material-symbols-outlined">check_circle</span>
+<span class="font-bold text-sm">Legacy-Safe Integration</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Hybrid Service Pillar -->
+<div class="space-y-6">
+<div class="bg-surface-container-high aspect-[3/4] rounded-lg overflow-hidden border border-[#CBD5D1]/60 flex flex-col p-4">
+<div class="mb-4 text-[10px] font-bold text-primary tracking-widest uppercase">Service Request State</div>
+<div class="flex-grow bg-[#EEF4FB] rounded border border-outline-variant/10 p-4 relative overflow-hidden">
+<div class="h-2 w-full bg-surface-container-high rounded mb-4"></div>
+<div class="flex items-center gap-3 mb-6">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">person</span>
+</div>
+<div class="space-y-1">
+<div class="h-1.5 w-16 bg-on-surface/40 rounded"></div>
+<div class="h-1 w-10 bg-on-surface/20 rounded"></div>
+</div>
+</div>
+<div class="p-3 bg-primary/10 border border-primary/20 rounded text-[10px] text-primary font-bold">
+                                        ASSIGNING STAFF...
+                                    </div>
+</div>
+</div>
+<h4 class="text-xl font-bold text-primary">Hybrid service</h4>
+<p class="text-sm text-on-surface-variant">Seamlessly switch between digital-first and staff-assisted service models based on guest preference or staff capacity.</p>
+</div>
+<!-- Integration-first Pillar -->
+<div class="space-y-6 md:mt-12">
+<div class="bg-surface-container-high aspect-[3/4] rounded-lg overflow-hidden border border-[#CBD5D1]/60 flex flex-col p-4">
+<div class="mb-4 text-[10px] font-bold text-primary tracking-widest uppercase">Order Queue Logic</div>
+<div class="flex-grow bg-[#EEF4FB] rounded border border-outline-variant/10 p-4 space-y-3">
+<div class="flex justify-between items-center p-2 bg-surface-container rounded border border-outline-variant/10">
+<div class="h-1.5 w-12 bg-on-surface/40 rounded"></div>
+<div class="h-1.5 w-4 bg-primary rounded"></div>
+</div>
+<div class="flex justify-between items-center p-2 bg-primary/5 rounded border border-primary/20 scale-105">
+<div class="h-1.5 w-16 bg-primary rounded"></div>
+<div class="h-1.5 w-4 bg-primary rounded"></div>
+</div>
+<div class="flex justify-between items-center p-2 bg-surface-container rounded border border-outline-variant/10">
+<div class="h-1.5 w-10 bg-on-surface/40 rounded"></div>
+<div class="h-1.5 w-4 bg-on-surface/20 rounded"></div>
+</div>
+</div>
+</div>
+<h4 class="text-xl font-bold text-primary">Integration-first</h4>
+<p class="text-sm text-on-surface-variant">Deep hooks into your existing POS and KDS providers to enable advanced routing without complex workflow rework.</p>
+</div>
+<!-- Built for real venues Pillar -->
+<div class="space-y-6 md:mt-24">
+<div class="bg-surface-container-high aspect-[3/4] rounded-lg overflow-hidden border border-[#CBD5D1]/60 flex flex-col p-4">
+<div class="mb-4 text-[10px] font-bold text-primary tracking-widest uppercase">Sync Confirmation</div>
+<div class="flex-grow bg-[#EEF4FB] rounded border border-outline-variant/10 flex flex-col items-center justify-center gap-4">
+<div class="w-16 h-16 rounded-full border-4 border-primary/30 border-t-primary animate-spin"></div>
+<div class="text-[10px] font-bold text-primary tracking-tighter">DATA SYNCHRONIZING</div>
+</div>
+</div>
+<h4 class="text-xl font-bold text-primary">Built for real venues</h4>
+<p class="text-sm text-on-surface-variant">Designed for the chaos of high-volume environments, ensuring fallback-ready operations and hardware compatibility.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- How it Works Section -->
+<section class="py-24 px-8 bg-surface-container-lowest" id="how-it-works">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-20">
+<h2 class="text-4xl font-headline font-bold text-on-background mb-4">Orchestration in action.</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto text-lg leading-relaxed">Guest actions become operational signals — routed, aligned, and completed in one connected flow.</p>
+</div>
+<div class="flex flex-col md:flex-row items-stretch justify-between gap-6 relative">
+<!-- Connector lines for desktop -->
+<div class="hidden md:block absolute top-[2.5rem] left-[12%] right-[12%] h-0.5 border-t-2 border-dashed border-primary/30 -z-0"></div>
+<!-- Step 1 -->
+<div class="flex-1 z-10">
+<div class="glass-card p-8 rounded-xl border border-[#CBD5D1]/60 relative h-full hover:bg-surface-container transition-colors group">
+<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold mb-6 shadow-[0_0_15px_rgba(13,148,136,0.22)] text-lg">1</div>
+<h4 class="font-bold text-on-background mb-4 text-xl">Guest initiates</h4>
+<p class="text-base text-on-surface-variant leading-relaxed">Guest scans a QR, requests staff via a physical button, or orders directly from their mobile device.</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex-1 z-10">
+<div class="glass-card p-8 rounded-xl border border-[#CBD5D1]/60 relative h-full hover:bg-surface-container transition-colors group">
+<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold mb-6 shadow-[0_0_15px_rgba(13,148,136,0.22)] text-lg">2</div>
+<h4 class="font-bold text-on-background mb-4 text-xl">AVO routes the action</h4>
+<p class="text-base text-on-surface-variant leading-relaxed">The request is instantly categorized and routed to the right screen, device, or team member in real-time.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex-1 z-10">
+<div class="glass-card p-8 rounded-xl border border-[#CBD5D1]/60 relative h-full hover:bg-surface-container transition-colors group">
+<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold mb-6 shadow-[0_0_15px_rgba(13,148,136,0.22)] text-lg">3</div>
+<h4 class="font-bold text-on-background mb-4 text-xl">Staff and systems stay aligned</h4>
+<p class="text-base text-on-surface-variant leading-relaxed">Your existing POS and KDS receive the data. Staff stay updated via wearable or handheld alerts.</p>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="flex-1 z-10">
+<div class="glass-card p-8 rounded-xl border border-[#CBD5D1]/60 relative h-full hover:bg-surface-container transition-colors group">
+<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold mb-6 shadow-[0_0_15px_rgba(13,148,136,0.22)] text-lg">4</div>
+<h4 class="font-bold text-on-background mb-4 text-xl">Payment and status forward</h4>
+<p class="text-base text-on-surface-variant leading-relaxed">Payment when you’re ready — starting with pay-at-counter, with table-side options where supported.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Use Cases Section -->
+<section class="py-32 px-8" id="use-cases">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div class="max-w-2xl">
+<h2 class="text-4xl font-headline font-bold text-on-background mb-4">Versatility by design.</h2>
+<p class="text-on-surface-variant text-lg">Tailored orchestration for modern hospitality operators.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Case 1 -->
+<div class="group bg-surface-container p-1 rounded-xl transition-all hover:bg-gradient-to-br hover:from-primary/30 hover:to-transparent border border-[#CBD5D1]/40">
+<div class="bg-background p-8 rounded-[10px] h-full">
+<span class="material-symbols-outlined text-primary-fixed-dim mb-6 text-4xl">storefront</span>
+<h3 class="text-xl font-bold text-on-background mb-4">Single restaurant</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">Elevate guest experience and staff efficiency in independent venues without changing your stack.</p>
+<ul class="space-y-3 text-xs text-on-surface/80">
+<li class="flex items-center gap-2 font-medium"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Staff request routing</li>
+<li class="flex items-center gap-2 font-medium"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> POS-safe integration</li>
+<li class="flex items-center gap-2 font-medium"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Fallback-ready operations</li>
+</ul>
+</div>
+</div>
+<!-- Case 2 -->
+<div class="group bg-surface-container p-1 rounded-xl transition-all hover:bg-gradient-to-br hover:from-primary/30 hover:to-transparent border border-[#CBD5D1]/40">
+<div class="bg-background p-8 rounded-[10px] h-full">
+<span class="material-symbols-outlined text-primary-fixed-dim mb-6 text-4xl">domain</span>
+<h3 class="text-xl font-bold text-on-background mb-4">Multi-brand operator</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">Centralize operations across diverse concepts with a single orchestration layer for consistent flow.</p>
+<ul class="space-y-3 text-xs text-on-surface/80">
+<li class="flex items-center gap-2 font-medium"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Multi-brand orchestration</li>
+<li class="flex items-center gap-2 font-medium"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Operator-level visibility</li>
+<li class="flex items-center gap-2 font-medium"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Unified data reporting</li>
+</ul>
+</div>
+</div>
+<!-- Case 3 (Future Ready) -->
+<div class="group relative bg-surface-container-low p-1 rounded-xl border border-[#CBD5D1]/40 overflow-hidden">
+<!-- Coming Soon Overlay -->
+<div class="absolute inset-0 z-10 bg-background/80 flex items-center justify-center p-8 text-center backdrop-blur-sm group-hover:bg-background/70 transition-colors">
+<div class="flex flex-col items-center">
+<span class="bg-primary/20 text-primary border border-primary/30 px-4 py-1.5 rounded-full text-[12px] font-black uppercase tracking-widest mb-4">Coming Soon</span>
+<h3 class="text-xl font-bold text-on-background mb-2">Food hall orchestration</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Multi-vendor ordering and unified settlement layers for massive shared spaces.</p>
+</div>
+</div>
+<div class="bg-background/40 p-8 rounded-[10px] h-full blur-[2px]">
+<span class="material-symbols-outlined text-primary-fixed-dim/40 mb-6 text-4xl">hub</span>
+<h3 class="text-xl font-bold text-on-background/40 mb-4">Shared seating / Food hall</h3>
+<p class="text-sm text-on-surface-variant/40 leading-relaxed mb-6">Manage multi-vendor ordering and unified payments.</p>
+<ul class="space-y-3 text-xs text-on-surface/30">
+<li class="flex items-center gap-2 font-medium"><span class="w-1.5 h-1.5 bg-primary/30 rounded-full"></span> Shared service layer</li>
+<li class="flex items-center gap-2 font-medium"><span class="w-1.5 h-1.5 bg-primary/30 rounded-full"></span> Multi-vendor settlement</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Integration Section -->
+<section class="py-24 px-8 bg-surface-container" id="integrations">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-3xl font-headline font-bold text-on-background mb-6">Integration without interruption.</h2>
+<p class="text-on-surface-variant mb-10 text-lg leading-relaxed">AVO connects to your existing stack through adapters and fallback logic — improve flow without forcing a rip-and-replace project.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+<div>
+<h5 class="font-bold text-primary mb-2">POS adapter approach</h5>
+<p class="text-sm text-on-surface-variant leading-relaxed">Deep hooks into legacy systems for seamless data flow.</p>
+</div>
+<div>
+<h5 class="font-bold text-primary mb-2">Fallback ready</h5>
+<p class="text-sm text-on-surface-variant leading-relaxed">Built to improve flow without forcing rip-and-replace.</p>
+</div>
+</div>
+<div class="bg-primary text-on-primary p-6 rounded-lg shadow-2xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-6xl">published_with_changes</span>
+</div>
+<h5 class="font-black text-xl mb-2 uppercase tracking-tight">No forced rip-and-replace</h5>
+<p class="text-sm font-medium leading-relaxed opacity-90">Keep the hardware and software your staff already knows. We adapt to them, acting as the connective orchestration layer.</p>
+</div>
+</div>
+<div class="relative bg-background/50 p-10 rounded-2xl border border-[#CBD5D1]/60 shadow-inner">
+<!-- Architecture Diagram -->
+<div class="flex flex-col items-center gap-6">
+<div class="w-full flex flex-col items-center">
+<div class="text-[10px] font-bold text-on-surface uppercase tracking-widest bg-surface-container-high px-4 py-2 rounded border border-[#CBD5D1]/40 mb-2">Guest Touchpoints</div>
+<span class="material-symbols-outlined text-primary/70">south</span>
+</div>
+<div class="w-full py-12 px-6 bg-primary/10 border-2 border-primary rounded-xl text-center shadow-[0_0_50px_rgba(13,148,136,0.08)]">
+<div class="text-primary font-black text-3xl tracking-[0.25em]">AVO ORCHESTRATION</div>
+<div class="text-[10px] text-primary/90 font-bold mt-3 uppercase tracking-[0.2em]">Real-time adaptive routing &amp; Logic</div>
+</div>
+<div class="w-full flex flex-col items-center">
+<span class="material-symbols-outlined text-primary/70">south</span>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 w-full mt-4">
+<div class="bg-surface-container-high p-4 rounded text-center border border-[#CBD5D1]/60 shadow-md">
+<span class="material-symbols-outlined text-on-surface-variant text-xl mb-1">terminal</span>
+<div class="text-[9px] font-bold text-on-surface-variant uppercase tracking-tighter">POS / KDS</div>
+</div>
+<div class="bg-surface-container-high p-4 rounded text-center border border-[#CBD5D1]/60 shadow-md">
+<span class="material-symbols-outlined text-on-surface-variant text-xl mb-1">payments</span>
+<div class="text-[9px] font-bold text-on-surface-variant uppercase tracking-tighter">Payment</div>
+</div>
+<div class="bg-surface-container-high p-4 rounded text-center border border-[#CBD5D1]/60 shadow-md">
+<span class="material-symbols-outlined text-on-surface-variant text-xl mb-1">watch</span>
+<div class="text-[9px] font-bold text-on-surface-variant uppercase tracking-tighter">Staff App</div>
+</div>
+<div class="bg-surface-container-high p-4 rounded text-center border border-[#CBD5D1]/60 shadow-md">
+<span class="material-symbols-outlined text-on-surface-variant text-xl mb-1">dashboard</span>
+<div class="text-[9px] font-bold text-on-surface-variant uppercase tracking-tighter">Staff View</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pilot CTA Section -->
+<section class="py-32 px-8 relative overflow-hidden" id="pilot-form">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-4xl opacity-20 pointer-events-none">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/8 to-tertiary/8 blur-[120px]"></div>
+</div>
+<div class="max-w-4xl mx-auto text-center relative z-10">
+<h2 class="text-5xl font-headline font-extrabold text-on-background mb-6 tracking-tight">Start with a focused pilot.</h2>
+<p class="text-xl text-on-surface-variant mb-12">One venue, focused scope, measurable outcome. Validate the flow and measure the impact before you expand.</p>
+<div class="bg-surface-container-high/40 p-1 border border-[#CBD5D1]/60 rounded-xl max-w-lg mx-auto backdrop-blur-md shadow-2xl">
+<form class="flex flex-col md:flex-row gap-2" id="pilot-form-element" onsubmit="event.preventDefault(); document.getElementById('form-success').classList.remove('hidden'); this.classList.add('hidden');">
+<input class="flex-grow bg-background border-none rounded text-on-surface px-6 py-4 focus:ring-2 focus:ring-primary text-sm font-medium" placeholder="Work email address" required="" type="email"/>
+<button class="bg-primary text-on-primary px-8 py-4 rounded font-bold text-sm whitespace-nowrap hover:shadow-[0_0_30px_rgba(13,148,136,0.28)] transition-all" type="submit">
+                            Book a pilot
+                        </button>
+</form>
+<div class="hidden py-4 px-6 text-primary font-bold text-sm animate-pulse" id="form-success">
+                        Thanks for your interest, we’ll be in touch!
+                    </div>
+<p class="text-[11px] text-on-surface-variant font-medium mt-4 pb-3">Pilot timeline varies by venue and POS setup.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#0F172A] py-24 px-8 w-full border-t border-slate-800">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+<div>
+<span class="text-2xl font-bold text-[#4fdbc8] mb-2 block font-headline uppercase tracking-tighter">AVO</span>
+<p class="text-[#4fdbc8] text-sm font-bold mb-6 tracking-tight uppercase">Built for flow, not friction.</p>
+<p class="font-['Inter'] text-base tracking-wide text-white/70 max-w-sm mb-10 leading-relaxed">
+                    AVO orchestrates hybrid service, ordering, and payment flow for modern venue operations.
+                </p>
+<div class="text-white/50 text-sm">
+                    © 2026 AVO - Adaptive Venue Orchestration. All rights reserved.
+                </div>
+</div>
+<div class="flex flex-col md:items-end justify-between">
+<div class="grid grid-cols-2 gap-16 mb-16">
+<div class="space-y-6">
+<h5 class="text-[#0F172A] text-sm font-bold uppercase tracking-widest border-b border-[#CBD5D1]/60 pb-2">Platform</h5>
+<ul class="space-y-3">
+<li><a class="text-[#0F172A]/70 text-sm hover:text-[#4fdbc8] transition-colors" href="#how-it-works">How it works</a></li>
+<li><a class="text-[#0F172A]/70 text-sm hover:text-[#4fdbc8] transition-colors" href="#integrations">Integrations</a></li>
+<li><a class="text-[#0d9488] text-sm font-bold hover:opacity-80 transition-opacity" href="#pilot-form">Book a pilot</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h5 class="text-[#0F172A] text-sm font-bold uppercase tracking-widest border-b border-[#CBD5D1]/60 pb-2">Company</h5>
+<ul class="space-y-3">
+<li><a class="text-[#0F172A]/70 text-sm hover:text-[#4fdbc8] transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-[#0F172A]/70 text-sm hover:text-[#4fdbc8] transition-colors" href="#">Terms of Service</a></li>
+<li><a class="text-[#0F172A]/70 text-sm hover:text-[#4fdbc8] transition-colors" href="mailto:hello@avo-tech.io">Contact</a></li>
+</ul>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<a class="text-[#0F172A] font-bold text-sm bg-surface-container-high px-6 py-3 rounded-full border border-outline-variant/40 flex items-center gap-3 hover:bg-surface-variant transition-colors" href="mailto:hello@avo-tech.io">
+<span class="material-symbols-outlined text-lg">mail</span>
+                        hello@avo-tech.io
+                    </a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

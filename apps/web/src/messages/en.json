@@ -1,0 +1,102 @@
+{
+  "nav": {
+    "howItWorks": "How it works",
+    "useCases": "Use cases",
+    "integrations": "Integrations",
+    "bookPilot": "Book a pilot",
+    "tagline": "Adaptive Venue Orchestration"
+  },
+  "hero": {
+    "badge": "HYBRID SERVICE ORCHESTRATION",
+    "title": "Service, orders, and payments — in one",
+    "titleAccent": "operational flow.",
+    "desc": "AVO helps restaurants and shared venues orchestrate hybrid service, ordering, and payment flows without replacing the systems they already use.",
+    "ctaPrimary": "Book a pilot",
+    "ctaSecondary": "See the flow",
+    "flow": {
+      "state": "Service request received",
+      "routing": "Order routed",
+      "system": "POS synced",
+      "transaction": "Payment pending",
+      "outcome": "Payment confirmed",
+      "syncing": "DATA SYNCHRONIZING"
+    }
+  },
+  "problem": {
+    "title": "Hospitality breaks when flow breaks.",
+    "items": [
+      { "title": "Staff attention delays", "desc": "Service slows down when staff attention depends on manual handoffs and visual checks." },
+      { "title": "Ordering bottlenecks", "desc": "Busy shifts expose weak points in the order flow, leading to lost revenue and frustration." },
+      { "title": "Payment friction", "desc": "The final table moment is often the slowest, stalling turnover and guest satisfaction." },
+      { "title": "Fragmented operations", "desc": "Requests, orders, and payment status are split across disconnected, legacy tools." }
+    ]
+  },
+  "solution": {
+    "title": "AVO is the orchestration layer between the table and the operation.",
+    "desc": "We don't replace your POS. We make service, orders, and payment flow work together inside the operation you already run.",
+    "quote": "AVO replaces friction, not your core systems.",
+    "features": ["Unified Flow Engine", "Legacy-Safe Integration"],
+    "cards": [
+      { "title": "Hybrid service", "label": "Service Request State", "desc": "Seamlessly switch between digital-first and staff-assisted service models based on guest preference or staff capacity." },
+      { "title": "Integration-first", "label": "Order Queue Logic", "desc": "Deep hooks into your existing POS and KDS providers to enable advanced routing without complex workflow rework." },
+      { "title": "Built for real venues", "label": "Sync Confirmation", "desc": "Designed for the chaos of high-volume environments, ensuring fallback-ready operations and hardware compatibility." }
+    ]
+  },
+  "howItWorks": {
+    "title": "Orchestration in action.",
+    "subtitle": "Guest actions become operational signals — routed, aligned, and completed in one connected flow.",
+    "steps": [
+      { "title": "Guest initiates", "desc": "Guest scans a QR, requests staff via a physical button, or orders directly from their mobile device." },
+      { "title": "AVO routes the action", "desc": "The request is instantly categorized and routed to the right screen, device, or team member in real-time." },
+      { "title": "Staff and systems stay aligned", "desc": "Your existing POS and KDS receive the data. Staff stay updated via wearable or handheld alerts." },
+      { "title": "Payment and status forward", "desc": "Payment when you're ready — starting with pay-at-counter, with table-side options where supported." }
+    ]
+  },
+  "useCases": {
+    "title": "Versatility by design.",
+    "subtitle": "Tailored orchestration for modern hospitality operators.",
+    "comingSoon": "Coming Soon",
+    "cards": [
+      { "title": "Single restaurant", "desc": "Elevate guest experience and staff efficiency in independent venues without changing your stack.", "features": ["Staff request routing", "POS-safe integration", "Fallback-ready operations"] },
+      { "title": "Multi-brand operator", "desc": "Centralize operations across diverse concepts with a single orchestration layer for consistent flow.", "features": ["Multi-brand orchestration", "Operator-level visibility", "Unified data reporting"] },
+      { "title": "Food hall orchestration", "desc": "The ultimate challenge. Multi-vendor ordering with a single guest checkout flow.", "features": ["Multi-vendor", "Single Checkout", "Complex Routing"] }
+    ]
+  },
+  "integrations": {
+    "title": "Integration without interruption.",
+    "desc": "AVO connects to your existing stack through adapters and fallback logic — improve flow without forcing a rip-and-replace project.",
+    "posTitle": "POS adapter approach",
+    "posDesc": "Deep hooks into legacy systems for seamless data flow.",
+    "fallbackTitle": "Fallback ready",
+    "fallbackDesc": "Built to improve flow without forcing rip-and-replace.",
+    "bannerTitle": "No forced rip-and-replace",
+    "bannerDesc": "Keep the hardware and software your staff already knows. We adapt to them, acting as the connective orchestration layer.",
+    "touchpoints": "Guest Touchpoints",
+    "orchestration": "AVO ORCHESTRATION",
+    "orchestrationSub": "Real-time adaptive routing & Logic",
+    "tech": {
+      "pos": "POS / KDS",
+      "payment": "Payment",
+      "staffApp": "Staff App",
+      "staffView": "Staff View"
+    }
+  },
+  "cta": {
+    "title": "Start with a focused pilot.",
+    "desc": "One venue, focused scope, measurable outcome. Validate the flow and measure the impact before you expand.",
+    "placeholder": "Work email address",
+    "button": "Book a pilot",
+    "success": "Thanks for your interest, we'll be in touch!",
+    "footer": "Pilot timeline varies by venue and POS setup."
+  },
+  "footer": {
+    "tagline": "Built for flow, not friction.",
+    "desc": "AVO orchestrates hybrid service, ordering, and payment flow for modern venue operations.",
+    "rights": "© 2026 AVO - Adaptive Venue Orchestration. All rights reserved.",
+    "platform": "Platform",
+    "company": "Company",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact"
+  }
+}
