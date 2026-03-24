@@ -3,13 +3,15 @@ import { Manrope, Inter } from "next/font/google";
 import "./globals.css";
 
 const manrope = Manrope({
-  subsets: ["latin"],
+  subsets: ["latin", "cyrillic"],
+  weight: ["600", "700", "800"],
   variable: "--font-manrope",
   display: "swap",
 });
 
 const inter = Inter({
-  subsets: ["latin"],
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-inter",
   display: "swap",
 });
